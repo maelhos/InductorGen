@@ -109,6 +109,10 @@ save_box = widgets.HBox([save_label,save_txtbox,save_btn]) # And wrap each eleme
 widgets.jsdlink((l, 'value'), (mv, 'max')) # because physicaly the margin can not exceed the length
 
 
+
+
+
+
 # Math Calculation
 def give_a(s):       # those are meaningless and useless without the context ...
     return 360/int(s)

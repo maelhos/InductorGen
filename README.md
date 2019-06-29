@@ -1,23 +1,21 @@
-# InductorGen
-A python based on gdspy to generate Inductors
+
 
 
 ![InductorGen Logo](http://nikolaskama.me/content/images/2017/02/InductorGen_small.png)
 
 # InductorGen
 
-> [InductorGen](https://nikolaskama.me/InductorGenproject) - **Generate inductor's layout**
+##Generate inductor's layout
 
 A python based tool generate inductors layout in GDS.
 It allows you to select specific lenght .
 
-- Compatible with Python **3+** 🎉.
+- Compatible with Python **3+** .
 
 - *Not* compatible with Windows.
 
-Authors: [Nikolaos Kamarinakis](mailto:nikolaskam@gmail.com) & [David Schütz](mailto:xdavid@protonmail.com).
+Authors: [Maël Hostettler](mailto:maelhos.dev@gmail.com) .
 
-[![Build Badge](https://travis-ci.org/maelhos/InductorGen.svg?branch=master)](https://travis-ci.org/maelhos/InductorGen)
 [![Compatibility](https://img.shields.io/badge/python-3-brightgreen.svg)](https://github.com/maelhos/InductorGen)
 
 

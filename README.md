@@ -5,7 +5,7 @@
 
 # InductorGen
 
-** Generate inductor's layout **
+### Generate inductor's layout **
 
 A python based tool to generate inductors layout in GDS.
 It allows you to select specific parameters.

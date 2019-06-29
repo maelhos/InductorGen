@@ -1,18 +1,18 @@
 
 
 
-![InductorGen Logo](http://nikolaskama.me/content/images/2017/02/InductorGen_small.png)
+![InductorGen Logo](https://github.com/maelhos/InductorGen/blob/master/res/logo.png)
 
 # InductorGen
 
-## Generate inductor's layout
+** Generate inductor's layout **
 
-A python based tool generate inductors layout in GDS.
-It allows you to select specific lenght .
+A python based tool to generate inductors layout in GDS.
+It allows you to select specific parameters.
 
 - Compatible with Python **3+** .
 
-- *Not* compatible with Windows.
+- *Compatible* with Windows.
 
 Authors: [Maël Hostettler](mailto:maelhos.dev@gmail.com) .
 
@@ -103,26 +103,4 @@ Here's a short demo:
 
 # Developers
 
-* Nikolaos Kamarinakis - [@nikolaskama](https://twitter.com/nikolaskama)
-* David Schütz - [@xdavidhu](https://twitter.com/xdavidhu)
-
-
-<br/>
-
-# Disclaimer
-
-InductorGen is provided as is under the MIT Licence (as stated below). 
-It is built for educational purposes *only*. If you choose to use it otherwise, the developers will not be held responsible. Please, do not use it with evil intent.
-
-
-<br/>
-
-# License
-
-Copyright (c) 2017-18 by [Nikolaos Kamarinakis](mailto:nikolaskam@gmail.com) & [David Schütz](mailto:xdavid@protonmail.com). Some rights reserved.
-
-InductorGen is under the terms of the [MIT License](https://www.tldrlegal.com/l/mit), following all clarifications stated in the [license file](https://raw.githubusercontent.com/maelhos/InductorGen/master/LICENSE).
-
-
-For more information head over to the [official project page](https://nikolaskama.me/InductorGenproject).
-You can also go ahead and email me anytime at **nikolaskam{at}gmail{dot}com** or David at **xdavid{at}protonmail{dot}com**.
+* Maël Hostettler - [@maelhos](https://www.instagram.com/maeldu39)

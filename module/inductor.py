@@ -1,3 +1,32 @@
+#!/usr/bin/env python3
+# -.- coding: utf-8 -.-
+# InductorGen
+from module.polygon import poly
+import matplotlib.pyplot as plt
+from module.utils import *
+from math import sqrt
+import gdspy
+#  Setup the gds cell where we will write
+cell = gdspy.Cell('Inductor', True)
+
+# Setup the reset_gdspy function
+# This function prevent gdspy from superimposing the new impetance when we genrerate more than one after running the program
+def write(filename):
+    writer = gdspy.write_gds(filename,cells=[cell], unit=1.0e-6,precision=1.0e-9)
+
+def preview():
+    return cell
+def reset_gdspy():
+    cell.remove_polygons(lambda pts, layer, datatype:
+                     layer == 0)
+    cell.remove_polygons(lambda pts, layer, datatype:
+                     layer == 1)
+    cell.remove_polygons(lambda pts, layer, datatype:
+                     layer == 2)
+# Setup the gdwrite function
+# This function is just to make thing faster
+def gdwrite(a,l):
+    cell.add(gdspy.Polygon(a,layer=l))
 
 # Defining the induct class wich take :
 # a : angle
@@ -16,7 +45,7 @@ class induct:
         
         self.t = turns
         self.l = length
-        self.s = int(sides)
+        self.s = sides
         
         self.d = d
         self.p = p

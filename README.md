@@ -81,21 +81,34 @@ Also, **keep in mind** that you might be asked to run some extra commands after 
 # Usage
 
 ```
-Usage: python3 InductorGen.py [options]
+usage: python3 InductorGen.py [options]
 
-Options:
-  --version             show program's version number and exit
+Required arguments:
   -h, --help            show this help message and exit
-  -p PACKETS, --packets=PACKETS
-                        number of packets broadcasted per minute (default: 6)
-  -s, --scan            perform a quick network scan and exit
-  -t TARGETS, --target=TARGETS
-                        specify target IP address(es) and perform attack
+  -l LENGTH, --length LENGTH
+                        Length of the inscribed square
+  -s {4,8}, --sides {4,8}
+                        Number of sides of the geometry (only 4 or 8)
+  -t TURNS, --turns TURNS
+                        Number of turns of the inductor
+  -lt LENTURN, --lenturn LENTURN
+                        Length of a turn
+  -p SPACE, --space SPACE
+                        Space between the turns
+  -r TAP, --tap TAP     Tapering coeficiant
+  -v OVERLAP, --overlap OVERLAP
+                        Overlap of the crossings
+  -m MARGIN, --margin MARGIN
+                        Margin between the vias and the M5 crossings
+  -d DEG, --deg DEG     Degrese of the crossings
+  -o OUTPUT, --output OUTPUT
+                        Filename of the gds out
+Optional arguments:
+  --disable-preview     Disable GDS output preview
+  --disable-save        Disable GDS file saving
 
 Examples:
   python3 InductorGen.py --target 192.168.1.10 
-  python3 InductorGen.py -t 192.168.1.5,192.168.1.10 -p 30
-  python3 InductorGen.py (interactive mode)
 ```
 
 To view all available options run:
@@ -107,17 +120,6 @@ or :
 ```
 ~/InductorGen ❯❯❯ sudo python3 InductorGen.py --help
 ```
-
-<br/>
-
-# Demo
-
-Here's a short demo:
-
-[![Asciinema Demo](https://nikolaskama.me/content/images/2017/01/InductorGen_asciinema.png)](https://asciinema.org/a/98200?autoplay=1&loop=1)
-
-(For more demos click [here](https://asciinema.org/~maelhos))
-
 
 <br/>
 

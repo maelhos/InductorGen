@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -.- coding: utf-8 -.-
+# InductorGen
+from math import cos,sin,radians
 # Defining the "poly" function wich take :
 # rad : radius of the circle 
 # s : number of sides of the geometry
@@ -7,7 +11,7 @@ def poly(radius, sides,a,s): # this function return an array on point for one ge
     y = []
     i = 1
     
-    
+    print(s)
     if s == 4 : # i2 is weird but here are some values of it ... (in fact too much values are useless because we only do octagon )
         i2 = 45+90
     elif s == 8:

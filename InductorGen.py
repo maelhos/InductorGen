@@ -2,11 +2,12 @@
 # -.- coding: utf-8 -.-
 # kickthemout.py
 
-from classes.inductor import induct
-from classes.polygon import poly
+
+from module.inductor import induct
 from math import cos,sin,tan,radians,sqrt
 import matplotlib.pyplot as plt
 import gdspy
+
 
 
 # Defining user's Widgets Variables
@@ -110,9 +111,6 @@ widgets.jsdlink((l, 'value'), (mv, 'max')) # because physicaly the margin can no
 
 
 
-
-
-
 # Math Calculation
 def give_a(s):       # those are meaningless and useless without the context ...
     return 360/int(s)
@@ -180,41 +178,26 @@ def reset_gdspy():
 
 
 # Generating the finale inductor :
-def inrealtime(s,d,l,deg,t,p,r,o,mv): # this function is executed each time we change the value of a slider an it updates the drawing
-    reset_gdspy()
-    a = give_a(int(s))
-    rad = give_rad(d,a) # the math things are recalcuated each time because of slider's change 
-    cr = give_cr(l,deg)
-    
-    if not "inductor" in dir(): # ckeck if the class have ever been instancied (we gain some time by just updating the already instancied class)
-        inductor = induct(a,rad,t,l,int(s),d,p,r,deg,o,mv,cr)
-    else:
-        
-        inductor.a = a
-        inductor.rad = rad
-        inductor.cr = cr
-        inductor.t = t
-        inductor.l = l
-        inductor.s = int(sp)
 
-        inductor.d = d
-        inductor.p = p
-        inductor.r = r
-        inductor.deg = deg
-        inductor.o = o
-        inductor.mv = mv
-        
-    x,y = inductor.generate()
-    inductor.draw(x,y) 
+reset_gdspy()
+a = give_a(int(s))
+rad = give_rad(d,a) # the math things are recalcuated each time because of slider's change 
+cr = give_cr(l,deg)
     
-    plt.axis('equal') 
-    plt.title("Drawing of the inductor")
-    plt.xticks([])
-    plt.yticks([])
-    plt.show() 
-    plt.close()
 
-    print("\x1b[31mBe Careful !! For the vias area and the angles MatPlotLib \nisn't representative !!\nDue to the length of the lines\x1b[0m")
+inductor = induct(a,rad,t,l,int(s),d,p,r,deg,o,mv)
+        
+x,y = inductor.generate()
+inductor.draw(x,y) 
+    
+plt.axis('equal') 
+plt.title("Drawing of the inductor")
+plt.xticks([])
+plt.yticks([])
+plt.show() 
+plt.close()
+
+print("\x1b[31mBe Careful !! For the vias area and the angles MatPlotLib \nisn't representative !!\nDue to the length of the lines\x1b[0m")
     
     
      
@@ -235,8 +218,8 @@ iorealtime = interactive_output(inrealtime,{
 
 
 
-def save(a): # when the button trigger this function, it give a positionnal argument so we need to recive it in order to make it work ...
-    writer = gdspy.write_gds(save_txtbox.value,cells=[cell], unit=1.0e-6,precision=1.0e-9)
+def save(filename): # when the button trigger this function, it give a positionnal argument so we need to recive it in order to make it work ...
+    writer = gdspy.write_gds(filename,cells=[cell], unit=1.0e-6,precision=1.0e-9)
 
 
 # Wrap everything into a widget and display it

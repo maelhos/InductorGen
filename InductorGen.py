@@ -60,7 +60,7 @@ o = args.overlap
 mv = args.margin
 
 filename = args.output
-if not filename[-3:] == ".gds": # if the correct extention isn't already set, set it
+if not filename[-4:] == ".gds": # if the correct extention isn't already set, set it
     filename += ".gds"
 
 
@@ -724,12 +724,12 @@ x,y = inductor.generate()
 inductor.draw(x,y) 
 if not args.disablepreview:  
     gdspy.LayoutViewer(library=None, cells=[cell])
-
-    #plt.axis('equal') 
-    #plt.title("Drawing of the inductor")
-    #plt.xticks([])
-    #plt.yticks([])
-    #plt.show() 
+   
+    plt.axis('equal') 
+    plt.title("Drawing of the inductor")
+    plt.xticks([])
+    plt.yticks([])
+    plt.show() 
 plt.close()
 
 print("\x1b[31mBe Careful !! For the vias area and the angles MatPlotLib \nisn't representative !!\nDue to the length of the lines\x1b[0m")

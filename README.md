@@ -36,7 +36,7 @@ You can download InductorGen by cloning the [Git Repo](https://github.com/maelho
 ```
 ## Windows Installation
 
-If you would like to install InductorGen on a Mac, please [download InductorGen as zip](https://github.com/maelhos/InductorGen/archive/master.zip), unzip it and run the following:
+If you would like to install InductorGen on a Windows, please [download InductorGen as zip](https://github.com/maelhos/InductorGen/archive/master.zip), unzip it and run the following:
 ```
 ~/InductorGen ❯ pip3 install -r requirements.txt
 
@@ -104,8 +104,8 @@ Required arguments:
   -o OUTPUT, --output OUTPUT
                         Filename of the gds out
 Optional arguments:
-  --disable-preview     Disable GDS output preview
-  --disable-save        Disable GDS file saving
+  --disablepreview     Disable GDS output preview
+  --disablesave        Disable GDS file saving
 
 Examples:
   python3 InductorGen.py --target 192.168.1.10 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -.- coding: utf-8 -.-
-# InductorGen
+#  InductorGen
+
 
 from math import cos,tan,radians,sqrt
 #import matplotlib.pyplot as plt

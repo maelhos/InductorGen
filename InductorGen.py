@@ -4,7 +4,6 @@
 
 
 from math import cos,tan,radians,sqrt
-#import matplotlib.pyplot as plt
 from module.utils import *
 from module.polygon import poly
 
@@ -144,11 +143,11 @@ class induct:
         while i < len(x):#   
             lstx = x[i][1:self.s//2+1]
             lsty = y[i][1:self.s//2+1]
-            #plt.plot(lstx,lsty,c="black") 
+            
             
             lstx = x[i][self.s//2+1:self.s + 1]
             lsty = y[i][self.s//2+1:self.s + 1]
-            #plt.plot(lstx,lsty,c="black")# 
+            
             i += 1
         i = 0
         while i < len(x):#   
@@ -168,32 +167,32 @@ class induct:
         
         lstx = [self.p+self.l,self.p+self.l]+[self.p,self.p][::-1]
         lsty = [y[0][4:6][0],y[0][4:6][0]-self.l]+[y[1][4:6][0],y[0][4:6][0]-self.l][::-1]
-        #plt.plot(lstx,lsty,c="black")
+        
         
         lstx1 = [-x[1][4:6][0],self.p+self.l]
         lsty1 = [y[0][4:6][0],y[0][4:6][0]]
-        #plt.plot(lstx1,lsty1,c="black")
+        
         
         
         lstx2 = [self.p,x[1][4:6][1]]
         lsty2 = [y[1][4:6][0],y[1][4:6][1]]
-        #plt.plot(lstx2,lsty2,c="black")
+        
         
         gdwrite(fusion(ar_to_tu(lstx,lsty) , ar_to_tu(lstx1[::-1],lsty1[::-1]) + ar_to_tu(lstx2[::-1],lsty2[::-1])),2)
         
         
         lstx = [-self.p-self.l,-self.p-self.l]+[-self.p,-self.p][::-1]
         lsty = [y[0][4:6][0],y[0][4:6][0]-self.l]+[y[1][4:6][0],y[0][4:6][0]-self.l][::-1]
-        #plt.plot(lstx,lsty,c="black")
+        
     
         
         lstx1 = [x[1][4:6][0],-self.p-self.l]
         lsty1 = [y[0][4:6][0],y[0][4:6][0]]
-        #plt.plot(lstx1,lsty1,c="black")
+        
                                                   
         lstx2 = [-self.p,x[1][4:6][0]]
         lsty2 = [y[1][4:6][0],y[1][4:6][0]]  
-        #plt.plot(lstx2,lsty2,c="black")
+        
  
         gdwrite(fusion(ar_to_tu(lstx,lsty) , ar_to_tu(lstx1[::-1],lsty1[::-1]) + ar_to_tu(lstx2[::-1],lsty2[::-1])),2)
 
@@ -203,30 +202,30 @@ class induct:
         
         lstx = [self.p+self.l,self.p+self.l]+[self.p,self.p][::-1]
         lsty = [y[0][4:6][0],y[0][4:6][0]-self.l]+[y[1][4:6][0],y[0][4:6][0]-self.l][::-1]
-        #plt.plot(lstx,lsty,c="black")
+        
         
         lstx1 = [-x[0][4:6][0],self.p+self.l]
         lsty1 = [y[0][4:6][0],y[0][4:6][0]]
-        #plt.plot(lstx1,lsty1,c="black")
+        
         
         
         lstx2 = [self.p,x[1][4:6][1]]
         lsty2 = [y[1][4:6][0],y[1][4:6][1]]
-        #plt.plot(lstx2,lsty2,c="black")
+        
                 
         
         lstx = [-self.p-self.l,-self.p-self.l]+[-self.p,-self.p][::-1]
         lsty = [y[0][4:6][0],y[0][4:6][0]-self.l]+[y[1][4:6][0],y[0][4:6][0]-self.l][::-1]
-        #plt.plot(lstx,lsty,c="black")
+        
     
         
         lstx1 = [x[0][4:6][0],-self.p-self.l]
         lsty1 = [y[0][4:6][0],y[0][4:6][0]]
-        #plt.plot(lstx1,lsty1,c="black")
+        
                                                   
         lstx2 = [-self.p,x[1][4:6][0]]
         lsty2 = [y[1][4:6][0],y[1][4:6][0]]  
-        #plt.plot(lstx2,lsty2,c="black")    
+        
     
     
     
@@ -245,13 +244,13 @@ class induct:
 
             lstx = [x[i][4:6][0] , x[i][4:6][0] + (xy-crr)/2 ]
             lsty = [-y[i][4:6][0] , -y[i][4:6][0]]
-            #plt.plot( lstx , lsty ,c="black")
+            
             gdwrite(ar_to_tu(lstx,lsty),2)
             
             
             lstx1 = [x[i][4:6][1] , x[i][4:6][1] - (xy-crr)/2 ]
             lsty1 = [-y[i][4:6][1] , -y[i][4:6][1]]
-            #plt.plot( lstx1 , lsty1 ,c="black")
+            
             gdwrite(ar_to_tu(lstx1,lsty1),2)
             i += 1
             if ab == 1:
@@ -300,8 +299,8 @@ class induct:
         while i < 2*self.t - coe: # forward the bottom to the cross
             xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
 
-            #plt.plot( [x[i][4:6][0] , x[i][4:6][0] + (xy-crr)/2 ] , [y[i][4:6][0] , y[i][4:6][0]] ,c="black")
-            #plt.plot( [x[i][4:6][1] , x[i][4:6][1] - (xy-crr)/2 ] , [y[i][4:6][1] , y[i][4:6][1]] ,c="black")
+            
+            
 
             i += 1
             if ab == 1:
@@ -362,7 +361,7 @@ class induct:
 
             if ab == 0 or ab == 1 :  
 
-                #plt.plot( [ x[i][4:6][0] + (xy-crr)/2 , x[i][4:6][0] + (xy-crr)/2 + crr ] , [-(y[i-2][4:6][0]) , -(y[i][4:6][0])] ,c="black")
+                
                 if jk == 0 or jk == 2:
                     tempx = []
                     tempy = []
@@ -446,13 +445,13 @@ class induct:
         
         
         while i < len(topcrossx): # draw top cross on M5 on matplotlib       
-            #plt.fill(topcrossx[i][:len(topcrossx[i])//2] + topcrossx[i][len(topcrossx[i])//2:][::-1] , topcrossy[i][:len(topcrossy[i])//2] + topcrossy[i][len(topcrossy[i])//2:][::-1],color="orange")
             
-            #plt.fill([topcrossx[i][0]] + [topcrossx[i][2]] + [topcrossx[i][2]+self.o] + [topcrossx[i][0]+self.o], [topcrossy[i][0]] + [topcrossy[i][2]]*2 + [topcrossy[i][0]],color="orange")
-            #plt.fill([topcrossx[i][1]] + [topcrossx[i][3]] + [topcrossx[i][3]-self.o] + [topcrossx[i][1]-self.o], [topcrossy[i][1]] + [topcrossy[i][3]]*2 + [topcrossy[i][1]],color="orange")
             
-            #plt.fill([topcrossx[i][0] + self.mv] + [topcrossx[i][2] + self.mv] + [topcrossx[i][2]+self.o - self.mv] + [topcrossx[i][0]+ self.o - self.mv], [topcrossy[i][0] - self.mv] + [topcrossy[i][2] + self.mv]*2 + [topcrossy[i][0] - self.mv],color="red")
-            #plt.fill([topcrossx[i][1] - self.mv] + [topcrossx[i][3] - self.mv] + [topcrossx[i][3]-self.o + self.mv] + [topcrossx[i][1]- self.o + self.mv], [topcrossy[i][1] - self.mv] + [topcrossy[i][3] + self.mv]*2 + [topcrossy[i][1] - self.mv],color="red")
+            
+            
+            
+            
+            
              
             i += 1  
         i = 2
@@ -515,7 +514,7 @@ class induct:
             if ab == 0 or ab == 1 :  
                 lstx = [ x[i][4:6][0] + (xy-crr)/2 , x[i][4:6][0] + (xy-crr)/2 + crr ] 
                 lsty = [(y[i-2][4:6][0]) , (y[i][4:6][0])]
-                #plt.plot( lstx,lsty  ,c="black")
+                
 
                 if jk == 0 or jk == 2:
                     tempx = []
@@ -602,14 +601,14 @@ class induct:
         i = 0 # 
         while i < len(topcrossx): # draw bottom cross on M5 on matplotlib
             
-            #plt.fill(topcrossx[i][:len(topcrossx[i])//2] + topcrossx[i][len(topcrossx[i])//2:][::-1] , topcrossy[i][:len(topcrossy[i])//2] + topcrossy[i][len(topcrossy[i])//2:][::-1],color="orange")
             
-            #plt.fill([topcrossx[i][0]] + [topcrossx[i][2]] + [topcrossx[i][2]+ self.o] + [topcrossx[i][0]+ self.o], [topcrossy[i][0]] + [topcrossy[i][2]]*2 + [topcrossy[i][0]],color="orange")
-            #plt.fill([topcrossx[i][1]] + [topcrossx[i][3]] + [topcrossx[i][3]- self.o] + [topcrossx[i][1]- self.o], [topcrossy[i][1]] + [topcrossy[i][3]]*2 + [topcrossy[i][1]],color="orange")
+            
+            
+            
                 
             # draw the vias   
-            #plt.fill([topcrossx[i][0] + self.mv] + [topcrossx[i][2] + self.mv] + [topcrossx[i][2]+ self.o - self.mv] + [topcrossx[i][0]+ self.o - self.mv], [topcrossy[i][0] +  self.mv] + [topcrossy[i][2] - self.mv]*2 + [topcrossy[i][0] + self.mv],color="red")
-            #plt.fill([topcrossx[i][1] - self.mv] + [topcrossx[i][3] - self.mv] + [topcrossx[i][3]- self.o + self.mv] + [topcrossx[i][1]- self.o + self.mv], [topcrossy[i][1] +  self.mv] + [topcrossy[i][3] - self.mv]*2 + [topcrossy[i][1] + self.mv],color="red")
+            
+            
              
             i += 1
 
@@ -675,12 +674,12 @@ class induct:
             
             lstx = [-xy/2 , xy/2 ]
             lsty = [y[(self.s + (2*self.t- self.s))-1][4:6][1] , y[(self.s + (2*self.t- self.s)-1)][4:6][1]]
-            #plt.plot( lstx , lsty ,c="black")
+            
             
             
             lstx1 = [-xy/2 , xy/2 ]
             lsty1 = [y[(self.s + (2*self.t- self.s))-2][4:6][1] , y[(self.s + (2*self.t- self.s)-2)][4:6][1]]
-            #plt.plot( lstx1 , lsty1 ,c="black")
+            
 
             gdwrite(ar_to_tu(lstx + lstx1[::-1] , lsty + lsty1[::-1] ),2)
         else:
@@ -688,13 +687,13 @@ class induct:
             
             lstx = [-xy/2 , xy/2 ]
             lsty = [-y[(self.s + (2*self.t- self.s))-1][4:6][0] , -y[(self.s + (2*self.t- self.s)-1)][4:6][0]]
-            #plt.plot( lstx , lsty ,c="black")
+            
             
             #xy = L(x[(self.s + (2*selft- self.s)-2)][4:6][0],y[(self.s + (2*self.t- self.s)-2)][4:6][0],-(x[(self.s + (2*self.t- self.s)-2)][4:6][0]),y[(self.s + (2*self.t- self.s)-2)][4:6][0])
             
             lstx1 = [-xy/2 , xy/2 ]
             lsty1 = [-y[(self.s + (2*self.t- self.s))-2][4:6][0] , -y[(self.s + (2*self.t- self.s)-2)][4:6][0]]
-            #plt.plot( lstx1 , lsty1 ,c="black")
+            
         
             gdwrite(ar_to_tu(lstx + lstx1[::-1] , lsty + lsty1[::-1] ),2)
             
@@ -726,12 +725,12 @@ inductor.draw(x,y)
 if not args.disablepreview:  
     gdspy.LayoutViewer(library=None, cells=[cell])
    
-    #plt.axis('equal') 
-    #plt.title("Drawing of the inductor")
-    #plt.xticks([])
-    #plt.yticks([])
-    #plt.show() 
-#plt.close()
+    
+    
+    
+    
+    
+
 
 print("\x1b[31mBe Careful !! For the vias area and the angles MatPlotLib \nisn't representative !!\nDue to the length of the lines\x1b[0m")
     

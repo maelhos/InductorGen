@@ -78,6 +78,14 @@ Also, **keep in mind** that you might be asked to run some extra commands after 
 
 <br/>
 
+# Windows GUI
+
+**BE CAREFUL !!**: You need to have installed python and the dependencies as esplained before running the Windows GUI. 
+
+Also, **note** that you might also need the .NET framework.
+
+<br/>
+
 # Usage
 
 ```

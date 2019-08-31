@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 # -.- coding: utf-8 -.-
-# InductorGen
+# InductorGen.polygon
+from module.utils import snaptogrid
 from math import cos,sin,radians
 # Defining the "poly" function wich take :
 # rad : radius of the circle 
 # s : number of sides of the geometry
-def poly(radius, sides,a,s): # this function return an array on point for one geometry (one polygon)
+
+
+def poly(radius, sides,a,s,ggg): # this function return an array on point for one geometry (one polygon)
         
     x = []
     y = []
@@ -19,9 +22,10 @@ def poly(radius, sides,a,s): # this function return an array on point for one ge
     
     while i < sides + 1 :
 
-        x.append(radius*cos(radians(a+i2)))
-        y.append(radius*sin(radians(a+i2)))
+        x.append(snaptogrid(radius*cos(radians(a+i2)),ggg))
+        y.append(snaptogrid(radius*sin(radians(a+i2)),ggg))
                  
         i += 1
         i2 += a
     return x,y
+

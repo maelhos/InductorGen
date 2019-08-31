@@ -47,8 +47,6 @@ def snaptogrid(coo,ggg):
 def give_rad(d,a):
     return (d/2)/(cos(radians(a/2)))
 
-def give_cr(l,deg,ggg): # distance betwenn the crossings
-    return snaptogrid(l/tan(radians(deg)),ggg)
 
 # Math Formula
 def L(xa,ya,xb,yb): # formula of the length between two points 

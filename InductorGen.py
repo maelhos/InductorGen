@@ -147,7 +147,23 @@ class induct:
             rr += self.p
         
             i += 1
-        return x,y
+        y2 = []
+        rr = 0
+        lenn = self.l+1
+        i = 1
+        while i < self.t + 2:
+            
+            tx,ty = poly(self.rad - rr,self.a * 360,self.a,self.s,self.grid)
+            rr += lenn
+            lenn = lenn*self.r
+            y2.append(ty)
+            
+            tx,ty = poly(self.rad - rr,self.a * 360,self.a,self.s,self.grid)
+            y2.append(ty)
+            rr += self.p
+        
+            i += 1
+        return x,y,y2
     
     def draw_poly(self,x,y): # this function is call "draw_poly" but in fact it just delete the useless lines in the poligon
         i = 0
@@ -310,7 +326,7 @@ class induct:
 
             i += 2
     
-    def draw_cross(self,x,y): # this HUGE function draw the cross (both colored and uncolored)
+    def draw_cross(self,x,y,y2): # this HUGE function draw the cross (both colored and uncolored)
         i = 2
   
         comp = self.t*2
@@ -391,7 +407,7 @@ class induct:
 
             
 
-            xxxx2 = (-x[i][4:6][0] - (xy-self.l)/2) + (-(y[i+2][4:6][0]) - (-(y[i][4:6][0])) )   # + 1 seems a bit weird but tapering round to unit allways give 1
+            xxxx2 = (-x[i][4:6][0] - (xy-self.l)/2) + (-(y2[i+2][4:6][0]) - (-(y[i][4:6][0])) )  
             lstx1 = [ x[i+1][4:6][0] + (xy1-self.l)/2 , -xxxx2]
             lsty1 = [(y[i-1][4:6][0]) , (y[i+1][4:6][0])]
             
@@ -492,7 +508,7 @@ class induct:
             gdwrite(ar_to_tu(lstx + lstx1[::-1] , lsty + lsty1[::-1] ,self.grid),2)
             
 
-    def draw(self,x,y): # this function just draw everything by calling all the overs ...
+    def draw(self,x,y,y2): # this function just draw everything by calling all the overs ...
 
         self.draw_poly(x,y)  
 
@@ -500,7 +516,7 @@ class induct:
     
         self.draw_cross_edge(x,y)
     
-        self.draw_cross(x,y)
+        self.draw_cross(x,y,y2)
     
         self.draw_end(x,y)  
 
@@ -514,8 +530,8 @@ rad = give_rad(d,a)
     
 inductor = induct(a,rad,t,l,s,d,p,r,o,mv,grid)
         
-x,y = inductor.generate()
-inductor.draw(x,y) 
+x,y,y2 = inductor.generate()
+inductor.draw(x,y,y2) 
  
 if args.drawgrid:
     inductor.draw_grid() # if dg than we draw the grid before writing so it apear in the GDS file

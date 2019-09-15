@@ -116,7 +116,7 @@ Required arguments:
 Optional arguments:
   --disablepreview     Disable GDS output preview
   --disablesave        Disable GDS file saving
-  --drawgridongds	   By default the grid is drawn only in the preview, --drawgridongds draw it in the .gds
+  --drawgridongds      By default the grid is drawn only in the preview, --drawgridongds draw it in the .gds
 
 Examples:
   python3 InductorGen.py -l 300 -s 8 -t 4 -lt 15 -p 3 -r 0.9 -v 5 -m 1 -g 1

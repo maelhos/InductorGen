@@ -14,7 +14,7 @@ It allows you to select specific parameters.
 
 - *Compatible* with Windows.
 
-Authors: [Maël Hostettler](mailto:maelhos.dev@gmail.com) .
+Authors: [Maël Hostettler](mailto:maelhos.dev@gmail.com)
 
 [![Compatibility](https://img.shields.io/badge/python-3-brightgreen.svg)](https://github.com/maelhos/InductorGen)
 
@@ -40,7 +40,7 @@ If you would like to install InductorGen on a Windows, please [download Inductor
 ```
 ~/InductorGen ❯ pip3 install -r requirements.txt
 
-~/InductorGen ❯ python3 InductorGen.py
+~/InductorGen ❯ python InductorGen.py
 ```
 or use [GitBash](https://gitforwindows.org) and run the following :
 
@@ -53,7 +53,7 @@ then back to cmd :
 
 ~/InductorGen ❯ pip3 install -r requirements.txt
 
-~/InductorGen ❯ python3 InductorGen.py
+~/InductorGen ❯ python InductorGen.py
 ```
 ## MacOS Installation
 
@@ -111,12 +111,15 @@ Required arguments:
   -d DEG, --deg DEG     Degrese of the crossings
   -o OUTPUT, --output OUTPUT
                         Filename of the gds out
+  -g GRIDSIZE, --grid GRIDSIZE 
+						The size of the grid 
 Optional arguments:
   --disablepreview     Disable GDS output preview
   --disablesave        Disable GDS file saving
+  --drawgridongds	   By default the grid is drawn only in the preview, --drawgridongds draw it in the .gds
 
 Examples:
-  python3 InductorGen.py --target 192.168.1.10 
+  python3 InductorGen.py -l 300 -s 8 -t 4 -lt 15 -p 3 -r 0.9 -v 5 -m 1 -g 1
 ```
 
 To view all available options run:
@@ -133,4 +136,4 @@ or :
 
 # Developers
 
-* Maël Hostettler - [@maelhos](https://www.instagram.com/maeldu39)
+* Maël Hostettler - [@maelhos](mailto:maelhos.dev@gmail.com)

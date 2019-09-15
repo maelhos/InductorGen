@@ -40,11 +40,12 @@ parser.add_argument("-r", "--tap", type=float,help="Tapering coeficiant", requir
 parser.add_argument("-v", "--overlap", type=float,help="Overlap of the crossings", required=True)
 parser.add_argument("-m", "--margin", type=float,help=" Margin between the vias and the M5 crossings", required=True)
 
-
 parser.add_argument("-g", "--grid", type=float,help="Eneble snap to grid with given lenth (1*10-6 m by default)", required=True)
-parser.add_argument("-dg", "--drawgrid",help="Draw the grid (with lenth given in -g wich is required) IN THE GDS", action="store_true")
 
 
+
+
+parser.add_argument("--drawgridongds",help="Draw the grid (with lenth given in -g wich is required) IN THE GDS", action="store_true")
 parser.add_argument("-o", "--output", type=str,help="Filename of the gds out")
 parser.add_argument("--disablepreview", help="Disable GDS output preview",action="store_true")
 parser.add_argument("--disablesave", help="Disable GDS file saving ",action="store_true")
@@ -533,7 +534,7 @@ inductor = induct(a,rad,t,l,s,d,p,r,o,mv,grid)
 x,y,y2 = inductor.generate()
 inductor.draw(x,y,y2) 
  
-if args.drawgrid:
+if args.drawgridongds:
     inductor.draw_grid() # if dg than we draw the grid before writing so it apear in the GDS file
 if save:
     write(filename)

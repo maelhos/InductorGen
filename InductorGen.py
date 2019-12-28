@@ -121,7 +121,7 @@ class induct:
        
         self.o = o
         self.mv = mv
-        
+        self.k = abs(self.p/(sqrt(2)/2)) + 1
         
 
     def generate(self): # this function draw the natives poligon
@@ -227,52 +227,40 @@ class induct:
 
     def draw_cross_edge(self,x,y):# this function just calculate and draw how far the middles lines should go before the crossing
         
-        ab = 0
-        i = 0
+
         
         if self.t % 2 == 0:
             coe = 1
         else:
             coe = 2
-        while i < 2*self.t - coe: # forward the top to the cross
-            
-            xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
-
-            lstx = [x[i][4:6][0] , x[i][4:6][0] + (xy-self.l)/2 ]
-            lsty = [-y[i][4:6][0] , -y[i][4:6][0]]
-            
-            gdwrite(ar_to_tu(lstx,lsty,self.grid),2)
-            
-            
-            lstx1 = [x[i][4:6][1] , x[i][4:6][1] - (xy-self.l)/2 ]
-            lsty1 = [-y[i][4:6][1] , -y[i][4:6][1]]
-            
-            gdwrite(ar_to_tu(lstx1,lsty1,self.grid),2)
-            i += 1
-            if ab == 1:
-                ab -= 1
-            else:
-                ab +=1
+        
         i = 0
         ab = 0
         
-        while i < 2*self.t -coe :
+        while i < 2*self.t - coe :
             
+            if ab == 0:
+                k1 = self.k
+                k2 = 0
+            else:
+                k1 = 0
+                k2 = self.k//2
             xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
-            xy1 = L(x[i+1][4:6][0],y[i+1][4:6][0],-(x[i+1][4:6][0]),y[i+1][4:6][0])
+            xy1 = L(x[i+1][4:6][0],y[i+1][4:6][0],-(x[i+1][4:6][0]),y[i+1][4:6][0])#################################################
             
-            lstx = [x[i+1][4:6][0] , x[i+1][4:6][0] + (xy1-self.l)/2 ]
+            lstx = [x[i+1][4:6][0], x[i+1][4:6][0] + (xy1-self.l)/2 - k2 ]
             lsty = [-y[i][4:6][0] , -y[i][4:6][0]]
             
-            lstx1 = [x[i+1][4:6][0] , x[i+1][4:6][0] + (xy1-self.l)/2 ]
+            lstx1 = [x[i+1][4:6][0] , x[i+1][4:6][0] + (xy1-self.l)/2 - k2]
             lsty1 = [-y[i+1][4:6][0] , -y[i+1][4:6][0]]
             
             gdwrite(ar_to_tu(lstx + lstx1[::-1],lsty + lsty1[::-1],self.grid),2)
             
-            lstx = [-x[i+1][4:6][0] , -x[i+1][4:6][0] - (xy1-self.l)/2 ]
+            
+            lstx = [-x[i+1][4:6][0] , -x[i+1][4:6][0] - (xy1-self.l)/2 + k1 ]
             lsty = [-y[i][4:6][0] , -y[i][4:6][0]]
             
-            lstx1 = [-x[i+1][4:6][0] , -x[i+1][4:6][0] - (xy1-self.l)/2 ]
+            lstx1 = [-x[i+1][4:6][0] , -x[i+1][4:6][0] - (xy1-self.l)/2 + k1]
             lsty1 = [-y[i+1][4:6][0] , -y[i+1][4:6][0]]
             
             gdwrite(ar_to_tu(lstx + lstx1[::-1],lsty + lsty1[::-1],self.grid),2)           
@@ -281,13 +269,6 @@ class induct:
                 ab -= 1
             else:
                 ab +=1
-        i = 2
-        ab = 0
-        
-        if self.t % 2 == 0:
-            coe = 1
-        else:
-            coe = 0
         
         i = 2
         ab = 0
@@ -296,26 +277,32 @@ class induct:
             coe = 2
         else:
             coe = 1
-        ab = 0
+        
         
         while i < 2*self.t - coe: 
+            if ab == 0:
+                k1 = self.k
+                k2 = 0
+            else:
+                k1 = 0
+                k2 = self.k//2
             xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
             xy1 = L(x[i+1][4:6][0],y[i+1][4:6][0],-(x[i+1][4:6][0]),y[i+1][4:6][0])
             
-            lstx = [x[i+1][4:6][0] , x[i][4:6][0] + (xy-self.l)/2 ]
+            lstx = [x[i+1][4:6][0] , x[i][4:6][0] + (xy-self.l)/2 - k2 ]
             lsty = [y[i][4:6][0] , y[i][4:6][0]]
             
-            lstx1 = [x[i+1][4:6][0] , x[i][4:6][0] + (xy-self.l)/2 ]
+            lstx1 = [x[i+1][4:6][0] , x[i][4:6][0] + (xy-self.l)/2 - k2]
             lsty1 = [y[i+1][4:6][0] , y[i+1][4:6][0]]
             
             gdwrite(ar_to_tu(lstx  + lstx1[::-1] ,lsty + lsty1[::-1],self.grid),2)
             
             
             
-            lstx = [-x[i+1][4:6][0] , -x[i][4:6][0] - (xy-self.l)/2 ]
+            lstx = [-x[i+1][4:6][0] , -x[i][4:6][0] - (xy-self.l)/2 + k1]
             lsty = [y[i][4:6][0] , y[i][4:6][0]]
             
-            lstx1 = [-x[i+1][4:6][0] , -x[i][4:6][0] - (xy-self.l)/2 ]
+            lstx1 = [-x[i+1][4:6][0] , -x[i][4:6][0] - (xy-self.l)/2 + k1]
             lsty1 = [y[i+1][4:6][0] , y[i+1][4:6][0]]
             
             gdwrite(ar_to_tu(lstx  + lstx1[::-1] ,lsty + lsty1[::-1],self.grid),2)
@@ -369,10 +356,10 @@ class induct:
             xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
             xy1 = L(x[i+1][4:6][0],y[i+1][4:6][0],-(x[i+1][4:6][0]),y[i+1][4:6][0])
 
-            lstx2 = [ -x[i][4:6][0] - (xy-self.l)/2 + self.o, -x[i+1][4:6][0] - (xy1-self.l)/2  + self.o]
+            lstx2 = [ -x[i][4:6][0] - (xy-self.l)/2 + self.o + self.k , -x[i+1][4:6][0] - (xy1-self.l)/2  + self.o + self.k]
             lsty2 = [-(y[i-2][4:6][0]) , -(y[i-1][4:6][0])]                                         
 
-            lstx3 = [ x[i][4:6][0] + (xy-self.l)/2 - self.o, x[i+1][4:6][0] + (xy1-self.l)/2  - self.o] #####
+            lstx3 = [ x[i][4:6][0] + (xy-self.l)/2 - self.o - self.k//2, x[i+1][4:6][0] + (xy1-self.l)/2  - self.o - self.k//2] #####
             lsty3 = [-(y[i+1][4:6][0]) , -(y[i][4:6][0])]
                 
             xxxx = (-x[i][4:6][0] - (xy-self.l)/2) + ((y[i-2][4:6][0]) + (-(y[i][4:6][0])) ) 
@@ -381,12 +368,12 @@ class induct:
 
 
             xxxx = (-x[i][4:6][0] - (xy-self.l)/2) + ((y[i-1][4:6][0]) + (-(y[i+1][4:6][0])) ) 
-            lstx1 = [ -x[i+1][4:6][0] - (xy1-self.l)/2 , xxxx] # IMPORTANT
+            lstx1 = [ -x[i+1][4:6][0] - (xy1-self.l)/2 , xxxx ] # IMPORTANT
             lsty1 = [-(y[i-1][4:6][0]) , -(y[i+1][4:6][0])]
             
             gdwrite(ar_to_tu(lstx2[::-1]+lstx+lstx3[::-1]+lstx1[::-1],lsty2[::-1]+lsty+lsty3[::-1]+lsty1[::-1],self.grid),0) # draw corssings
 
-            lstx = [ -x[i][4:6][0] - (xy-self.l)/2 , x[i][4:6][0] + (xy-self.l)/2]
+            lstx = [ -x[i][4:6][0] - (xy-self.l)/2 + self.k, x[i][4:6][0] + (xy-self.l)/2 - self.k//2]
             lstx1 = [ -x[i+1][4:6][0] - (xy1-self.l)/2 ,-x[i][4:6][0] - (xy-self.l)/2]       
                  #draw vias
             gdwrite(ar_to_tu([lstx2[1]-self.mv,lstx2[0]-self.mv] + [lstx[0]+self.mv]*2 ,[lsty2[1] + self.mv,lsty2[0] - self.mv] + [lsty[0] - self.mv] + [lsty2[1] + self.mv],self.grid),1)
@@ -395,8 +382,10 @@ class induct:
             i += 4  
 
         i = 4
-
-        while i < comp  : # draw bottom cross on M5
+  
+        comp = self.t*2
+        
+        while i < comp  : # draw bottom cross on M5 on gdspy (blue)
             xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
             xy1 = L(x[i+1][4:6][0],y[i+1][4:6][0],-(x[i+1][4:6][0]),y[i+1][4:6][0])
             xxxx1 = (-x[i][4:6][0] - (xy-self.l)/2) + ((y[i-2][4:6][0]) + (-(y[i][4:6][0])) ) 
@@ -406,39 +395,36 @@ class induct:
             lstx = [ x[i][4:6][0] + (xy-self.l)/2 , -xxxx1]
             lsty = [(y[i-2][4:6][0]) , (y[i][4:6][0]) ]
 
-            
+         
 
-            xxxx2 = (-x[i][4:6][0] - (xy-self.l)/2) + (-(y2[i+2][4:6][0]) - (-(y[i][4:6][0])) )  
-            lstx1 = [ x[i+1][4:6][0] + (xy1-self.l)/2 , -xxxx2]
-            lsty1 = [(y[i-1][4:6][0]) , (y[i+1][4:6][0])]
+            xxxx2 = x[i+1][4:6][0] + (xy1-self.l)/2 + (-(y[i-1][4:6][0]) -  -(y[i+1][4:6][0]))
+
+            lstx1 = [ x[i+1][4:6][0] + (xy1-self.l)/2 , xxxx2 ]
+            lsty1 = [(y[i-1][4:6][0])  , (y[i+1][4:6][0])]
             
             lstyy = [(y[i][4:6][0])]
-            if xxxx2 > -(-x[i][4:6][0] - (xy-self.l)/2):
-
-                vari = (-x[i][4:6][0] - (xy-self.l)/2)
-                lstxx = [vari]
-                ptx =  vari
+            if (-xxxx1 > -x[i][4:6][0] - (xy-self.l)/2):
+                lstxx = [-xxxx1]
+                ptx =  -xxxx1
             else:
                 
                 ptx =  x[i][4:6][0] + (xy-self.l)/2 + self.l + (self.l-(self.l*self.r))
                 lstxx = [ptx]
             pty = (y[i+1][4:6][0])
-
-
-            gdwrite(ar_to_tu(lstx+lstxx+[ptx]+lstx1[::-1],lsty+lstyy+[pty]+lsty1[::-1],self.grid),2)                       
+            
+            gdwrite(ar_to_tu(lstx+lstxx+[ptx]+lstx1[::-1],lsty+lstyy+[pty]+lsty1[::-1],self.grid),2)    
 
             i += 4
-  
         i = 4
         
         while i < comp  : # draw bottom cross on M6
             xy = L(x[i][4:6][0],y[i][4:6][0],-(x[i][4:6][0]),y[i][4:6][0])
             xy1 = L(x[i+1][4:6][0],y[i+1][4:6][0],-(x[i+1][4:6][0]),y[i+1][4:6][0])
 
-            lstx2 = [ -x[i][4:6][0] - (xy-self.l)/2 + self.o, -x[i+1][4:6][0] - (xy1-self.l)/2  + self.o] ##### X = -x[i][4:6][0] - (xy-self.l)/2
+            lstx2 = [ -x[i][4:6][0] - (xy-self.l)/2 + self.o + self.k, -x[i+1][4:6][0] - (xy1-self.l)/2  + self.o+ self.k ] ##### X = -x[i][4:6][0] - (xy-self.l)/2
             lsty2 = [(y[i-2][4:6][0]) , (y[i-1][4:6][0])]                                             # Y = -(y[i-2][4:6][0])
 
-            lstx3 = [ x[i][4:6][0] + (xy-self.l)/2 - self.o, x[i+1][4:6][0] + (xy1-self.l)/2  - self.o] #####
+            lstx3 = [ x[i][4:6][0] + (xy-self.l)/2 - self.o - self.k//2, x[i+1][4:6][0] + (xy1-self.l)/2  - self.o - self.k//2] #####
             lsty3 = [(y[i+1][4:6][0]) , (y[i][4:6][0])]
                 
             xxxx = (-x[i][4:6][0] - (xy-self.l)/2) + ((y[i-2][4:6][0]) + (-(y[i][4:6][0])) ) 
@@ -453,7 +439,7 @@ class induct:
             
             gdwrite(ar_to_tu(lstx2[::-1]+lstx+lstx3[::-1]+lstx1[::-1],lsty2[::-1]+lsty+lsty3[::-1]+lsty1[::-1],self.grid),0)                        
         
-            lstx = [ -x[i][4:6][0] - (xy-self.l)/2 , x[i][4:6][0] + (xy-self.l)/2]
+            lstx = [ -x[i][4:6][0] - (xy-self.l)/2 + self.k , x[i][4:6][0] + (xy-self.l)/2 - self.k//2]
             lstx1 = [ -x[i+1][4:6][0] - (xy1-self.l)/2 ,-x[i][4:6][0] - (xy-self.l)/2] 
 
             #draw vias
@@ -482,7 +468,7 @@ class induct:
         while g > -px-2:
             gdwrite(ar_to_tu([px,-px],[g]*2,self.grid),3)
             g -= self.grid
-    def draw_end(self,x,y): # this fumction draw the "end" by connecting the 2 last cable
+    def draw_end(self,x,y): # this function draw the "end" by connecting the 2 last cable
 
         lstx1,lsty1,lstx2,lsty2 = [],[],[],[]
         if self.t % 2 == 0: # connect the last turn in top or bottom depending on the nb of turns ( even or odd number of turns)
